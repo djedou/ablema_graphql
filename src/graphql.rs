@@ -12,7 +12,7 @@ use url::form_urlencoded;
 
 
 
-pub async fn playground(
+pub async fn ag_playground(
     graphql_endpoint: &str
 ) -> Result<Response<Body>, hyper::Error> {
     let mut resp = new_html_response(StatusCode::OK);
@@ -22,7 +22,7 @@ pub async fn playground(
     Ok(resp)
 }
 
-pub async fn graphql_sync<QueryT, MutationT, SubscriptionT>(
+pub async fn ag_graphql_sync<QueryT, MutationT, SubscriptionT>(
     schema: Schema<QueryT, MutationT, SubscriptionT>,
     req: Request<Body>,
 ) -> Result<Response<Body>, hyper::Error>

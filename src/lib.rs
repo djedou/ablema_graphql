@@ -1,7 +1,9 @@
 mod graphql;
 
+pub use hyper;
+pub use async_graphql;
 
 pub use graphql::{
-    playground,
-    graphql_sync
+    ag_playground,
+    ag_graphql_sync
 };
