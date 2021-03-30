@@ -78,9 +78,9 @@ async fn parse_post_json_req(
         .await
         .map_err(GraphQLRequestError::BodyHyper)?;
 
-    //let input = String::from_utf8(chunk.iter().cloned().collect())
-    let input= serde_json::to_string_pretty(&chunk as &[u8])
-        .map_err(GraphQLRequestError::BodyJSONError)?;
+        //let input= serde_json::to_string_pretty(&chunk)
+    let input = String::from_utf8(chunk.iter().cloned().collect())
+        .map_err(GraphQLRequestError::BodyUtf8)?;
 
     serde_json::from_str::<BatchRequest>(&input)
         .map_err(GraphQLRequestError::BodyJSONError)
