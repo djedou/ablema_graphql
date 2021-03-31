@@ -49,6 +49,7 @@ async fn parse_req(
                 .map(HeaderValue::to_str);
             match content_type {
                 Some(Ok("application/json")) => parse_post_json_req(req.into_body()).await,
+                Some(Ok("text/plain;charset=UTF-8")) => parse_post_json_req(req.into_body()).await,
                 Some(Ok("application/graphql")) => parse_post_graphql_req(req.into_body()).await,
                 _ => return Err(new_response(StatusCode::BAD_REQUEST)),
             }
