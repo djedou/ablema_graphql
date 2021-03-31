@@ -129,7 +129,8 @@ where
     let mut resp = new_response(code);
     resp.headers_mut().insert(
         header::CONTENT_TYPE,
-        HeaderValue::from_static("application/json"),
+        //HeaderValue::from_static("application/json"),
+        HeaderValue::from_static("text/plain;charset=UTF-8"),
     );
     *resp.body_mut() = body;
     resp
