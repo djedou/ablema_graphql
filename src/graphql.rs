@@ -119,7 +119,8 @@ where
     SubscriptionT: SubscriptionType + 'static,
 {
     let res = schema.execute_batch(request).await;
-    let body = Body::from(serde_json::to_string_pretty(&res).unwrap());
+    //let body = Body::from(serde_json::to_string_pretty(&res).unwrap());
+    let body = Body::from(serde_json::to_string(&res).unwrap());
     let code = if res.is_ok() {
         StatusCode::OK
     } else {
