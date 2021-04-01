@@ -131,6 +131,10 @@ where
         header::CONTENT_TYPE,
         HeaderValue::from_static("application/json"),
     );
+    resp.headers_mut().insert(
+        header::ACCESS_CONTROL_ALLOW_ORIGIN,
+        HeaderValue::from_static("*"),
+    );
     *resp.body_mut() = body;
     resp
 }
